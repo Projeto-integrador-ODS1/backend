@@ -1,11 +1,19 @@
 package com.projetointegradorODS1.model;
 
-import org.hibernate.annotations.UpdateTimestamp;
+import java.time.LocalDateTime;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "tb_postagens")
@@ -15,37 +23,29 @@ public class Postagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O atributo título é Obrigatório!")
-    @Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
+    @NotBlank(message = "O Atributo título é Obrigatório!")
+    @Size(min = 5, max = 100, message = "O Atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
     private String titulo;
 
-    @NotBlank(message = "O atributo mensagem é Obrigatório!")
-    @Size(min = 10, max = 1000, message = "O atributo mensagem deve conter no mínimo 10 e no máximo 1000 caracteres")
-    private String mensagem;
+    @NotBlank(message = "O Atributo texto é Obrigatório!")
+    @Size(min = 10, max = 1000, message = "O Atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
+    private String texto;
 
     @UpdateTimestamp
     private LocalDateTime data;
 
-    @NotBlank(message = "O atributo compartilhamento é Obrigatório!")
-    private Boolean compartilhamento;
-
-    @NotBlank(message = "O atributo aceita_comentario é Obrigatório!")
-    private Boolean aceita_comentario;
-
-    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
-    @JoinColumn(name = "tema_id", nullable = false)
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
     private Tema tema;
 
-    public Tema getTema() {
-        return tema;
-    }
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private Usuario usuario;
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
-    }
+    /*Insira os Getters and Setters*/
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -53,42 +53,43 @@ public class Postagem {
     }
 
     public String getTitulo() {
-        return titulo;
+        return this.titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public String getMensagem() {
-        return mensagem;
+    public String getTexto() {
+        return this.texto;
     }
 
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public LocalDateTime getData() {
-        return data;
+        return this.data;
     }
 
     public void setData(LocalDateTime data) {
         this.data = data;
     }
 
-    public Boolean getCompartilhamento() {
-        return compartilhamento;
+    public Tema getTema() {
+        return this.tema;
     }
 
-    public void setCompartilhamento(Boolean compartilhamento) {
-        this.compartilhamento = compartilhamento;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
 
-    public Boolean getAceita_comentario() {
-        return aceita_comentario;
+    public Usuario getUsuario() {
+        return this.usuario;
     }
 
-    public void setAceita_comentario(Boolean aceita_comentario) {
-        this.aceita_comentario = aceita_comentario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
+
 }
