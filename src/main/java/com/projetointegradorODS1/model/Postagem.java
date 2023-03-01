@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
@@ -24,15 +25,21 @@ public class Postagem {
     private Long id;
 
     @NotBlank(message = "O Atributo título é Obrigatório!")
-    @Size(min = 5, max = 100, message = "O Atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
+    @Size(min = 5, max = 200, message = "O Atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
     private String titulo;
 
-    @NotBlank(message = "O Atributo texto é Obrigatório!")
-    @Size(min = 10, max = 1000, message = "O Atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
-    private String texto;
+    @NotBlank(message = "O Atributo mensagem é Obrigatório!")
+    @Size(min = 10, max = 500, message = "O Atributo mensagem deve conter no mínimo 10 e no máximo 1000 caracteres")
+    private String mensagem;
 
     @UpdateTimestamp
-    private LocalDateTime data;
+    private LocalDateTime data_postagem;
+
+    @JsonProperty("compartilhamento")
+    private boolean compartilhamento;
+
+    @JsonProperty("aceita_comentario")
+    private boolean aceita_comentario;
 
     @ManyToOne
     @JsonIgnoreProperties("postagem")
@@ -42,7 +49,37 @@ public class Postagem {
     @JsonIgnoreProperties("postagem")
     private Usuario usuario;
 
-    /*Insira os Getters and Setters*/
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public LocalDateTime getData_postagem() {
+        return data_postagem;
+    }
+
+    public void setData_postagem(LocalDateTime data_postagem) {
+        this.data_postagem = data_postagem;
+    }
+
+    public boolean isCompartilhamento() {
+        return compartilhamento;
+    }
+
+    public void setCompartilhamento(boolean compartilhamento) {
+        this.compartilhamento = compartilhamento;
+    }
+
+    public boolean isAceita_comentario() {
+        return aceita_comentario;
+    }
+
+    public void setAceita_comentario(boolean aceita_comentario) {
+        this.aceita_comentario = aceita_comentario;
+    }
 
     public Long getId() {
         return this.id;
@@ -58,22 +95,6 @@ public class Postagem {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getTexto() {
-        return this.texto;
-    }
-
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
-
-    public LocalDateTime getData() {
-        return this.data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
     }
 
     public Tema getTema() {

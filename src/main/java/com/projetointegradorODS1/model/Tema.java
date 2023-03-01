@@ -19,7 +19,7 @@ public class Tema {
     @Size(min = 5, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres")
     private String nome;
 
-    @NotBlank(message = "O atributo descrição é Obrigatório!")
+    //@NotBlank(message = "O atributo descrição é Obrigatório!")
     @Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
     private String descricao;
 
