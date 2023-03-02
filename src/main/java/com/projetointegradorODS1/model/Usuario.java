@@ -31,6 +31,9 @@ public class Usuario {
     @Email(message = "O Atributo Usuário deve ser um email válido!")
     private String usuario;
 
+    @NotNull(message = "O Atributo cpf_cnpj é Obrigatório!")
+    private Long cpf_cnpj;
+
     @NotBlank(message = "O Atributo Senha é Obrigatório!")
     @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
     private String senha;
@@ -41,6 +44,17 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuario")
     private List<Postagem> postagem;
+
+    public Usuario(Long id, String nome, String usuario, Long cpf_cnpj, String senha, String foto) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.cpf_cnpj = cpf_cnpj;
+        this.senha = senha;
+        this.foto = foto;
+    }
+
+    public Usuario() { }
 
     /* Insira os Getters and Setters */
 
@@ -66,6 +80,14 @@ public class Usuario {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public Long getCpf_cnpj() {
+        return cpf_cnpj;
+    }
+
+    public void setCpf_cnpj(Long cpf_cnpj) {
+        this.cpf_cnpj = cpf_cnpj;
     }
 
     public String getSenha() {
