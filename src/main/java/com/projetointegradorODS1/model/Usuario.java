@@ -1,5 +1,6 @@
 package com.projetointegradorODS1.model;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.CascadeType;
