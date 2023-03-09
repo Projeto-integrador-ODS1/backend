@@ -3,18 +3,24 @@
 # Blog ODS1
 
 ### Grupo:
-Carol Bitencourt; 
-Celina Marinho; 
-Larissa Santos; 
-Márcio Pessôa; 
-Marcos Imperio.
+@Carol-Bitencourt;
+
+@CelinaMarinho; 
+
+@TechComLari; 
+
+@pessoamarcio; 
+
+@imperio0001.
 
 ##
 
 ### Sobre o Projeto Integrador:
 
 Desafio: Dificuldade de encontrar de modo catalogado as iniciativas já existentes; 
+
 Nossa solução: Blog que faz a ponte entre ONGs que atuam na erradicação da pobreza e voluntários e pessoas interessadas em ações neste assunto;
+
 Objetivo: Ser um blog que apresenta feed de notícias com foco em serviços básicos, visando ser um veículo onde ONGs e  outras entidades possam 
 divulgar e manter-se atualizadas a respeito de iniciativas que impactam a vida da população mais vulnerável.
 
