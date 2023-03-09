@@ -1,17 +1,13 @@
 # Backend do Projeto Integrador - Generation
 
-##
-
 # Blog ODS1
 
-##
-
 ### Grupo:
-Carol Bitencourt
-Celina Marinho
-Larissa Santos
-Márcio Pessôa
-Marcos Imperio
+Carol Bitencourt; 
+Celina Marinho; 
+Larissa Santos; 
+Márcio Pessôa; 
+Marcos Imperio.
 
 ##
 
